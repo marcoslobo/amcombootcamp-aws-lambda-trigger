@@ -62,7 +62,6 @@ namespace amcom.bootcamp.aws.lambda.trigger
                 throw;
             }
         }
-
         private async Task ThreatRecord(DynamoDBEvent.DynamodbStreamRecord record)
         {
 
