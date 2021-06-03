@@ -24,7 +24,7 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/app/publish
       
-    - run: docker build --tag my-image:v1 -f /amcombootcamp-aws-lambda-trigger/Dockerfile
+    - run: docker build . --tag my-image:v1 -f amcombootcamp-aws-lambda-trigger/Dockerfile
     - name: Push to ECR
       id: ecr
       uses: jwalton/gh-ecr-push@v1
