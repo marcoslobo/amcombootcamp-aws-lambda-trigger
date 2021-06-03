@@ -5,7 +5,7 @@ RUN dotnet restore "amcombootcamp-aws-lambda-trigger/amcombootcamp-aws-lambda-tr
 COPY . .
 
 FROM build AS publish
-RUN dotnet publish "amcombootcamp-aws-lambda-trigger/amcombootcamp-aws-lambda-trigger.csproj" -c Release -o /app/publish
+RUN dotnet publish "amcombootcamp-aws-lambda-trigger/amcombootcamp-aws-lambda-trigger.csproj" --configuration "Release" /p:GenerateRuntimeConfigurationFiles=true --runtime linux-x64 --self-contained false
 
 FROM public.ecr.aws/lambda/dotnet:5.0
 WORKDIR /var/task
