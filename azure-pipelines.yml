@@ -1,10 +1,9 @@
 trigger:
-  branches:
-    include:
-    - master
+- master
+
 resources:
-  repositories:
-  - repository: self
+- repo: self
+
 variables:
 - name: tag
   value: '$(Build.BuildId)'
@@ -29,7 +28,7 @@ stages:
       inputs:
         repository: $(DOCKER_REPOSITORY)
         command: buildAndPush
-        Dockerfile: Dockerfile
+        Dockerfile: amcombootcamp-aws-lambda-trigger/Dockerfile        
         tags: |-
           api-latest
 
