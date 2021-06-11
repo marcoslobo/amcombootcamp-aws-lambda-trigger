@@ -143,8 +143,8 @@ namespace amcom.bootcamp.aws.lambda.trigger
         private string GetEmailMessageForSimpleAudit(string action, string key, string data)
         {
             if (action == "AU")
-                return $"Você {action} em {data}";
-            else return $"Você {action} {key} em {data}";
+                return $"You {action} at {data}";
+            else return $"You {action} {key} at {data}";
         }
 
         private string GetEmailTitle(string description)
@@ -157,13 +157,13 @@ namespace amcom.bootcamp.aws.lambda.trigger
             switch (action)
             {
                 case "DL":
-                    return "removeu o arquivo";
+                    return "removed the file";
                 case "U":
-                    return "incluiu o arquivo";
+                    return "added the file";
                 case "DW":
-                    return "baixou o arquivo";
+                    return "downloaded the file";
                 case "AU":
-                    return "solicitou auditoria";
+                    return "requested audit";
                 default:
                     return string.Empty;
             }
@@ -173,13 +173,13 @@ namespace amcom.bootcamp.aws.lambda.trigger
             switch (action)
             {
                 case "DL":
-                    return "Remoção de arquivo";
+                    return "File Removed";
                 case "U":
-                    return "Inclusão de arquivo";
+                    return "File Added";
                 case "DW":
-                    return "Download de arquivo";
+                    return "File Downloaded";
                 case "AU":
-                    return "Log de auditoria";
+                    return "Audit Log";
                 default:
                     return string.Empty;
             }
