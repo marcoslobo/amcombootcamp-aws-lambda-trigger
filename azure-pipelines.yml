@@ -1,4 +1,5 @@
 trigger:
+
 - master
 
 resources:
@@ -31,4 +32,9 @@ stages:
         Dockerfile: amcombootcamp-aws-lambda-trigger/Dockerfile        
         tags: |-
           latest
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
