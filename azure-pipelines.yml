@@ -30,5 +30,5 @@ stages:
         command: buildAndPush
         Dockerfile: amcombootcamp-aws-lambda-trigger/Dockerfile        
         tags: |-
-          api-latest
+          latest
 
