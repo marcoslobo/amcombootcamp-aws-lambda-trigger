@@ -160,7 +160,7 @@ namespace amcom.bootcamp.aws.lambda.trigger
                 case "DL":
                     return "removed the file";
                 case "U":
-                    return "added the file!!!";
+                    return "added the file!!!!";
                 case "DW":
                     return "downloaded the file";
                 case "AU":
