@@ -32,15 +32,14 @@ stages:
         Dockerfile: amcombootcamp-aws-lambda-trigger/Dockerfile        
         tags: |-
           latest
-    
     - task: GitHubRelease@1
       inputs:
         gitHubConnection: 'marcoslobo'
         repositoryName: 'marcoslobo/amcombootcamp-aws-lambda-trigger'
         action: 'create'
         target: '$(Build.SourceVersion)'
-        tagSource: 'gitTag'
+        tagSource: 'userSpecifiedTag'
+        tag: 'release'
         changeLogCompareToRelease: 'lastFullRelease'
         changeLogType: 'commitBased'
- 
 
