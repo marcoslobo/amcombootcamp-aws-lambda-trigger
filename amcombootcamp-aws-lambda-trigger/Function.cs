@@ -32,6 +32,7 @@ namespace amcom.bootcamp.aws.lambda.trigger
         }
         public async Task<string> FunctionHandler(DynamoDBEvent evnt, ILambdaContext context)
         {
+
             EmailFrom = Environment.GetEnvironmentVariable("email_from");
             EmailSmtp = Environment.GetEnvironmentVariable("email_smtp");
             EmailUser = Environment.GetEnvironmentVariable("email_user");
