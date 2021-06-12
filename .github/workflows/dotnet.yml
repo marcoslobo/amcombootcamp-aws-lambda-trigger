@@ -13,11 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-
     - name: deploy      
     - run: docker build . --tag my-image:v1 -f amcombootcamp-aws-lambda-trigger/Dockerfile
     - name: Push to ECR
