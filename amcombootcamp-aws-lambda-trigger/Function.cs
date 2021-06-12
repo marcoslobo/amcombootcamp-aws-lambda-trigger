@@ -107,14 +107,14 @@ namespace amcom.bootcamp.aws.lambda.trigger
 
             Table auditCatalog = Table.LoadTable(client, DynamoDbTableName);
 
-            ScanFilter scanFilter = new ScanFilter();
+            ScanFilter scanFilter = new();
             scanFilter.AddCondition("email", ScanOperator.Equal, emailTo);
 
             Search search = auditCatalog.Scan(scanFilter);
 
             var msgForAudit = new StringBuilder();
 
-            List<Document> documentList = new List<Document>();
+            List<Document> documentList = new();
             do
             {
                 documentList = await search.GetNextSetAsync();
@@ -141,51 +141,41 @@ namespace amcom.bootcamp.aws.lambda.trigger
 
         }
 
-        private string GetEmailMessageForSimpleAudit(string action, string key, string data)
+        private static string GetEmailMessageForSimpleAudit(string action, string key, string data)
         {
             if (action == "AU")
                 return $"You {action} at {data}";
             else return $"You {action} {key} at {data}";
         }
 
-        private string GetEmailTitle(string description)
+        private static string GetEmailTitle(string description)
         {
             return $"Lobo Files - {description}";
         }
 
-        private string GetActionDescription(string action)
+        private static string GetActionDescription(string action)
         {
-            switch (action)
+            return action switch
             {
-                case "DL":
-                    return "removed the file";
-                case "U":
-                    return "added the file?";
-                case "DW":
-                    return "downloaded the file";
-                case "AU":
-                    return "requested audit";
-                default:
-                    return string.Empty;
-            }
+                "DL" => "removed the file",
+                "U" => "added the file",
+                "DW" => "downloaded the file",
+                "AU" => "requested audit",
+                _ => string.Empty,
+            };
         }
-        private string GetActionDescriptionForTile(string action)
+        private static string GetActionDescriptionForTile(string action)
         {
-            switch (action)
+            return action switch
             {
-                case "DL":
-                    return "File Removed";
-                case "U":
-                    return "File Added";
-                case "DW":
-                    return "File Downloaded";
-                case "AU":
-                    return "Audit Log";
-                default:
-                    return string.Empty;
-            }
+                "DL" => "File Removed",
+                "U" => "File Added",
+                "DW" => "File Downloaded",
+                "AU" => "Audit Log",
+                _ => string.Empty,
+            };
         }
-        private MimeMessage CreateMessage(string sender, string receiver, string subject, string message)
+        private static MimeMessage CreateMessage(string sender, string receiver, string subject, string message)
         {
             var mimeMessage = new MimeMessage();
             mimeMessage.From.Add(new MailboxAddress("", sender));
