@@ -39,7 +39,7 @@ stages:
         action: 'create'
         target: '$(Build.SourceVersion)'
         tagSource: 'userSpecifiedTag'
-        tag: 'release'
+        tag: 'v-$(Build.SourceVersion)'
         changeLogCompareToRelease: 'lastFullRelease'
         changeLogType: 'commitBased'
 
