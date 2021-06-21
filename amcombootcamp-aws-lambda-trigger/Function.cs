@@ -81,7 +81,7 @@ namespace amcom.bootcamp.aws.lambda.trigger
                 var data = DateTime.Parse(record.Dynamodb.NewImage.FirstOrDefault(a => a.Key == "createdAt").Value.S);
                 var actionDescription = GetActionDescription(action);
 
-                var dataFormatada = data.ToString("dd/MM/yyyy - HH:mm");
+                var dataFormatada = data.ToString("MM/dd/yyyy - HH:mm");
                 body = GetEmailMessageForSimpleAudit(GetActionDescription(action), key, dataFormatada);
             }
 
@@ -128,7 +128,7 @@ namespace amcom.bootcamp.aws.lambda.trigger
                         key = item.FirstOrDefault(a => a.Key == "key").Value;
 
                     var data = DateTime.Parse(item.FirstOrDefault(a => a.Key == "createdAt").Value);
-                    var dataFormatada = data.ToString("dd/MM/yyyy - HH:mm");
+                    var dataFormatada = data.ToString("MM/dd/yyyy - HH:mm");
 
                     var msg = GetEmailMessageForSimpleAudit(GetActionDescription(action), key, dataFormatada) + "<BR />";
 
