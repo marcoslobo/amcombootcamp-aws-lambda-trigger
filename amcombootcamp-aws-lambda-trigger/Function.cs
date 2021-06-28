@@ -150,7 +150,7 @@ namespace amcom.bootcamp.aws.lambda.trigger
 
         private static string GetEmailTitle(string description)
         {
-            return $"Lobo Files - {description}";
+            return $"Lobo Files!! - {description}";
         }
 
         private static string GetActionDescription(string action)
